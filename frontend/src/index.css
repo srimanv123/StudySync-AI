@@ -51,20 +51,20 @@
 :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
+    --card: oklch(0.94 0.05 236);
     --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
+    --popover: oklch(0.99 0.03 237);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
+    --primary: oklch(0.45 0.28 245);
     --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
+    --secondary: oklch(0.55 0.28 268);
     --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.94 0.05 234);
+    --muted-foreground: oklch(0.54 0.04 236);
+    --accent: oklch(0.59 0.35 205);
+    --accent-foreground: oklch(0.985 0 0);
     --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
+    --border: oklch(0.86 0.06 232);
     --input: oklch(0.922 0 0);
     --ring: oklch(0.708 0 0);
     --chart-1: oklch(0.87 0 0);
@@ -128,4 +128,64 @@
     @apply font-sans;
     scroll-behavior: smooth;
     }
+}
+
+:root {
+    --glass-card-bg: rgba(255, 255, 255, 0.72);
+    --glass-card-border: rgba(148, 163, 184, 0.20);
+    --gradient-accent-from: var(--accent);
+    --gradient-accent-to: var(--secondary);
+    --gradient-text-from: var(--primary);
+    --gradient-text-to: var(--accent);
+}
+
+.dark {
+    --glass-card-bg: rgba(15, 23, 42, 0.65);
+    --glass-card-border: rgba(255, 255, 255, 0.10);
+}
+
+@layer utilities {
+  .glass-card {
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--glass-card-border);
+    background-color: var(--glass-card-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 25px 50px -25px rgba(15, 23, 42, 0.20);
+  }
+
+  .gradient-accent {
+    background-image: linear-gradient(
+      135deg,
+      var(--gradient-accent-from),
+      var(--gradient-accent-to)
+    );
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(
+      90deg,
+      var(--gradient-text-from),
+      var(--gradient-text-to)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    animation: fade-in-up 0.65s ease-out forwards;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

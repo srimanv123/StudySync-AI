@@ -1,4 +1,4 @@
-import { ChevronDown, Sparkles, BookOpen, MessageSquare, Zap } from 'lucide-react'
+import { ChevronDown, BookOpen, MessageSquare, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function Hero() {
