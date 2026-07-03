@@ -9,7 +9,7 @@ export default function Hero() {
           <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-left-4 duration-700">
             <div className="inline-block">
               <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm font-semibold">
-                ✨ AI-Powered Learning Platform
+                AI-Powered Learning Platform
               </span>
             </div>
 
