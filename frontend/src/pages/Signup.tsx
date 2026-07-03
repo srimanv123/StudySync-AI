@@ -1,7 +1,5 @@
+import { SignupPage } from "../components/auth/SignupPage";
+
 export default function Signup() {
-  return (
-    <main>
-      <h1>Signup</h1>
-    </main>
-  );
+  return <SignupPage />;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
+import { Link } from "react-router-dom";
 import { User, Mail, Lock, Check } from 'lucide-react';
 import { AuthLayout } from './AuthLayout';
 import { AuthCard } from './AuthCard';
@@ -237,7 +237,7 @@ export function SignupPage() {
           {/* Sign In Link */}
           <p className="text-center text-sm text-gray-600">
             Already have an account?{' '}
-            <Link href="/login" className="text-purple-600 hover:text-purple-700 font-semibold transition-colors">
+            <Link to="/login" className="text-purple-600 hover:text-purple-700 font-semibold transition-colors">
               Sign in
             </Link>
           </p>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { Mail, Lock } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Mail } from 'lucide-react';
 import { AuthLayout } from './AuthLayout';
 import { AuthCard } from './AuthCard';
 import { PasswordInput } from './PasswordInput';
@@ -111,7 +111,7 @@ export function LoginPage() {
                 />
                 <span className="text-sm text-gray-600 group-hover:text-gray-700">Remember me</span>
               </label>
-              <Link href="/forgot-password" className="text-sm text-purple-600 hover:text-purple-700 font-medium transition-colors">
+              <Link to="/forgot-password" className="text-sm text-purple-600 hover:text-purple-700 font-medium transition-colors">
                 Forgot password?
               </Link>
             </div>
@@ -160,7 +160,7 @@ export function LoginPage() {
           {/* Sign Up Link */}
           <p className="text-center text-sm text-gray-600">
             Don&apos;t have an account?{' '}
-            <Link href="/signup" className="text-purple-600 hover:text-purple-700 font-semibold transition-colors">
+            <Link to="/signup" className="text-purple-600 hover:text-purple-700 font-semibold transition-colors">
               Create one
             </Link>
           </p>

@@ -9,6 +9,7 @@ import Notes from "@/pages/Notes";
 import Quiz from "@/pages/Quiz";
 import Settings from "@/pages/Settings";
 import Signup from "@/pages/Signup";
+import ForgotPassword from "@/pages/ForgotPassword";
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoutes() {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/notes" element={<Notes />} />
       <Route path="/quiz" element={<Quiz />} />

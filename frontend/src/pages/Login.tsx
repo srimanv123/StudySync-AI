@@ -1,7 +1,5 @@
+import { LoginPage } from "../components/auth/LoginPage";
+
 export default function Login() {
-  return (
-    <main>
-      <h1>Login</h1>
-    </main>
-  );
+  return <LoginPage />;
 }
