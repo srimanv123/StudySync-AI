@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import { AuthLayout } from './AuthLayout';
 import { AuthCard } from './AuthCard';
 import { PasswordInput } from './PasswordInput';
 import { AuthIllustration } from './AuthIllustration';
+import { login } from '../../api/auth';
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
@@ -12,6 +13,8 @@ export function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [authError, setAuthError] = useState('');
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
@@ -32,16 +35,29 @@ export function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    
-    // Handle login
-    console.log('Login with:', { email, password, rememberMe });
+    setAuthError('');
+
+    try {
+      const response = await login(email, password);
+
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(response.user));
+
+      navigate('/dashboard');
+    } catch (error: unknown) {
+      const message =
+        error && typeof error === 'object' && 'response' in error && error.response && typeof error.response === 'object' && 'data' in error.response && error.response.data && typeof error.response.data === 'object' && 'message' in error.response.data
+          ? String(error.response.data.message)
+          : 'Invalid email or password.';
+
+      setAuthError(message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -115,6 +131,10 @@ export function LoginPage() {
                 Forgot password?
               </Link>
             </div>
+
+            {authError && (
+              <p className="text-sm text-red-500 text-center">{authError}</p>
+            )}
 
             {/* Login Button */}
             <button

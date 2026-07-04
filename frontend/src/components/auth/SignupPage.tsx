@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { User, Mail, Lock, Check } from 'lucide-react';
+import { User, Mail, Check } from 'lucide-react';
 import { AuthLayout } from './AuthLayout';
 import { AuthCard } from './AuthCard';
 import { PasswordInput } from './PasswordInput';

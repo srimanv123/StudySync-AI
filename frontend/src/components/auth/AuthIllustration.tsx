@@ -1,4 +1,3 @@
-import React from 'react';
 import { BookOpen, Zap, Brain, MessageSquare } from 'lucide-react';
 
 export function AuthIllustration() {

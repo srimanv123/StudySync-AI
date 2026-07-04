@@ -1,23 +1,6 @@
-import { FileText, Sparkles, BookOpen, Zap, MessageSquare, TrendingUp, type LucideIcon } from 'lucide-react'
-
-interface TimelineStep {
-  icon: LucideIcon
-  title: string
-  desc: string
-  color: string
-  delay: string
-}
+import { BookOpen, Zap, MessageSquare } from 'lucide-react'
 
 export default function AIChatDemo() {
-  const timelineSteps: TimelineStep[] = [
-    { icon: FileText, title: 'Upload Your Materials', desc: 'Share PDFs, notes, slides, or recordings with one click', color: 'from-indigo-600 to-purple-600', delay: '0s' },
-    { icon: Sparkles, title: 'AI Analysis', desc: 'Our AI reads and understands every word of your content', color: 'from-purple-600 to-pink-600', delay: '0.1s' },
-    { icon: BookOpen, title: 'Smart Flashcards', desc: 'Automatically generate contextual flashcards for recall practice', color: 'from-pink-600 to-red-600', delay: '0.2s' },
-    { icon: Zap, title: 'Interactive Quizzes', desc: 'Test yourself with AI-generated questions that match your level', color: 'from-red-600 to-orange-600', delay: '0.3s' },
-    { icon: MessageSquare, title: 'AI Chat Tutor', desc: 'Get instant answers and explanations from your personal AI tutor', color: 'from-orange-600 to-cyan-600', delay: '0.4s' },
-    { icon: TrendingUp, title: 'Track & Improve', desc: 'Monitor progress with detailed analytics and personalized insights', color: 'from-cyan-600 to-blue-600', delay: '0.5s' },
-  ]
-
   return (
     <>
       <section id="ai-chat" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
