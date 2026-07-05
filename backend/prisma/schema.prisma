@@ -20,16 +20,17 @@ model User {
 }
 
 model Note {
-  id          String   @id @default(cuid())
+  id         String   @id @default(cuid())
 
-  title       String
-  fileName    String
-  fileUrl     String
-  fileType    String
-  fileSize    Int
+  title      String
+  fileName   String
+  fileUrl    String
+  fileType   String
+  fileSize   Int
 
-  userId      String
-  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  createdAt   DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
