@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User, Mail, Check } from 'lucide-react';
 import { AuthLayout } from './AuthLayout';
 import { AuthCard } from './AuthCard';
 import { PasswordInput } from './PasswordInput';
 import { PasswordStrength } from './PasswordStrength';
 import { AuthIllustration } from './AuthIllustration';
+import { register } from "../../api/auth";
+
+
 
 export function SignupPage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -54,18 +58,55 @@ export function SignupPage() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!validateForm()) return;
+  // Validate the form first
+  if (!validateForm()) return;
 
-    setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+  // Start loading
+  setIsLoading(true);
+
+  try {
+    // Create the object that matches RegisterRequest
+    const registerData = {
+      fullName: formData.fullName,
+      email: formData.email,
+      password: formData.password,
+    };
+
+    // Call the backend API
+    const response = await register(registerData);
+
+    // Registration successful
+    if (response.success) {
+      alert(response.message);
+
+      // Clear the form
+      setFormData({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+      setAcceptTerms(false);
+
+      // Redirect to Login page
+      navigate("/login");
+    }
+  } catch (error: any) {
+    console.error("Registration failed:", error);
+
+    // Show backend error if available
+    alert(
+      error?.response?.data?.message ||
+      "Something went wrong. Please try again."
+    );
+  } finally {
+    // Always stop loading
     setIsLoading(false);
-
-    // Handle signup
-    console.log('Signup with:', formData);
-  };
+  }
+};
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
